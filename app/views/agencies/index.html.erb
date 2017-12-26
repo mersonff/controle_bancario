@@ -1,0 +1,23 @@
+<h1 align="center">Listando todas as agências</h1>
+
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Número</th>
+				<th scope="col">Endereço</th>
+				<th scope="col">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @agencies.each do |agency| %>
+			<tr>
+				<th scope="row"><%= agency.id %></th>
+				<td><%= agency.number %></td>
+				<td><%= agency.address %></td>
+				<td><%= link_to "Editar", edit_agency_path(agency), class: "btn btn-warning btn-sm" %> <%= link_to "Deletar", agency_path(agency), class: "btn btn-danger btn-sm", method: :delete,
+									data: {confirm: "Tem certeza que deseja deletar a agência e todas as contas associadas a ela?"} %></td>
+			</tr>
+		<% end %> 
+		</tbody>
+	</table>

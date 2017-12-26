@@ -1,0 +1,28 @@
+<%= render 'shared/errors', obj: @agency %>
+
+	<%= form_for(@agency, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+	<div class="form-group row">
+		<div class="col-md-2 col-form-label ">
+			<%= f.label :number, "Número da Agência" %>
+		</div>
+		<div class="col-md-10">
+			<%= f.number_field :number, class: "form-control", placeholder: "Entre com o número da agência", autofocus: true %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-2 col-form-label">
+			<%= f.label :address, "Endereço da Agência" %>
+		</div>
+		<div class="col-md-10">
+			<%= f.text_area :address, class: "form-control", placeholder: "Entre com o endereço da agência" %>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="offset-2 col-md-10">
+			<%= f.submit(@agency.new_record? ? "Salvar" : "Atualizar", class: "btn btn-primary btn-lg btn-block") %>
+		</div>
+	</div>
+	<% end %>
+	<div class="offset-5 col-md-6 colormatch">
+		[ <%= link_to "Cancelar e retornar pra lista de agências", agencies_path %> ]
+	</div>
