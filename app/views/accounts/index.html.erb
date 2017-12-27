@@ -1,0 +1,27 @@
+<h1 align="center">Listando todas as contas</h1>
+
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Número da Agência</th>
+				<th scope="col">Número da Conta</th>
+				<th scope="col">Saldo</th>
+				<th scope="col">Limite</th>
+				<th scope="col">Ações</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% @accounts.each do |account| %>
+			<tr>
+				<th scope="row"><%= account.id %></th>
+				<td><%= account.agency.number %></td>
+				<td><%= account.account_number %></td>
+				<td><%= account.balance %></td>
+				<td><%= account.limit %></td>
+				<td><%= link_to "Editar", edit_account_path(account), class: "btn btn-warning btn-sm" %> <%= link_to "Deletar", account_path(account), class: "btn btn-danger btn-sm", method: :delete,
+									data: {confirm: "Tem certeza que deseja deletar a conta?"} %></td>
+			</tr>
+		<% end %> 
+		</tbody>
+	</table>

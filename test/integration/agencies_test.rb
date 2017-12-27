@@ -63,4 +63,15 @@ class AgenciesTest < ActionDispatch::IntegrationTest
   	assert_select 'div.error-body'
   end
 
+   test "successfully agency delete" do
+  	get agencies_path
+  	assert_template 'agencies/index'
+  	assert_select 'a[href=?]', agency_path(@agency), text: "Deletar"
+  	assert_difference 'Agency.count', -1 do
+  		delete agency_path(@agency)
+  	end
+  	assert_redirected_to agencies_path
+  	assert_not flash.empty?
+  end
+
 end
