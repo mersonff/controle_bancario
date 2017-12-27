@@ -5,6 +5,7 @@ class AgenciesTest < ActionDispatch::IntegrationTest
 	def setup
 		@agency = Agency.create!(number: 1, address: "Rua JK, 151, Centro")
 		@agency2 = Agency.create!(number: 2, address: "Rua Valdir Leopercio, 574, Centro")
+    @user = User.create!(email: "emerson@example.com", password: "password", password_confirmation: "password")
 	end
   
   test "should get agencies index" do
@@ -20,6 +21,7 @@ class AgenciesTest < ActionDispatch::IntegrationTest
   end
 
   test "should create a new valid agency" do
+    sign_in_as(@user, "password")
   	get new_agency_path
   	assert_template 'agencies/new'
   	number_of_agency = 3
@@ -32,6 +34,7 @@ class AgenciesTest < ActionDispatch::IntegrationTest
   end
 
   test "should reject a invalid agency" do
+    sign_in_as(@user, "password")
   	get new_agency_path
   	assert_template 'agencies/new'
   	assert_no_difference 'Agency.count' do
@@ -43,6 +46,7 @@ class AgenciesTest < ActionDispatch::IntegrationTest
   end
 
   test "successfully agency update" do
+    sign_in_as(@user, "password")
   	get edit_agency_path(@agency)
   	assert_template 'agencies/edit'
   	updated_number = 3
@@ -55,6 +59,7 @@ class AgenciesTest < ActionDispatch::IntegrationTest
   end
 
   test "reject a invalid agency update" do
+    sign_in_as(@user, "password")
   	get edit_agency_path(@agency)
   	assert_template 'agencies/edit'
   	patch agency_path(@agency), params: { agency: { number: nil, address: "" } }
@@ -64,6 +69,7 @@ class AgenciesTest < ActionDispatch::IntegrationTest
   end
 
    test "successfully agency delete" do
+    sign_in_as(@user, "password")
   	get agencies_path
   	assert_template 'agencies/index'
   	assert_select 'a[href=?]', agency_path(@agency), text: "Deletar"

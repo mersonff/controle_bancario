@@ -4,7 +4,7 @@ class AccountTest < ActiveSupport::TestCase
 
 	def setup
 		@agency = Agency.create!(number: 1, address: "Rua JK, 151, Centro")
-		@account = Account.new(account_number: 1, limit: 1000.00, balance: 300, agency: @agency)
+		@account = Account.new(account_number: 1, limit: 1000, balance: 300, agency: @agency)
 	end
 
 	test "account should be valid" do

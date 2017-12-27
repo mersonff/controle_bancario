@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.4'
 gem 'rails-controller-testing'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'

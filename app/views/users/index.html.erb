@@ -1,0 +1,21 @@
+<h1 align="center">Listando todos os usuários</h1>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Email</th>
+			<th scope="col">Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<th scope="row"><%= user.id %></th>
+			<td><%= user.email %></td>
+			<td><%= link_to "Editar", edit_user_path(user), class: "btn btn-warning btn-sm" %> <%= link_to "Deletar", user_path(user), class: "btn btn-danger btn-sm", method: :delete,
+				data: {confirm: "Tem certeza que deseja deletar a agência e todas as contas associadas a ela?"} %></td>
+			</tr>
+			<% end %> 
+		</tbody>
+	</table>

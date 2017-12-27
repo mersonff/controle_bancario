@@ -6,6 +6,7 @@ class AccountsTest < ActionDispatch::IntegrationTest
 		@account = Account.create(account_number: 1, limit: 1000.00, balance: 300, agency: @agency)
 		@account2 = @agency.accounts.build(account_number: 2, limit: 2000.00, balance: 400, agency: @agency)
 		@account2.save
+    @user = User.create!(email: "emerson@example.com", password: "password", password_confirmation: "password")
 	end
   
   test "should get accounts index" do
@@ -21,6 +22,7 @@ class AccountsTest < ActionDispatch::IntegrationTest
   end
 
   test "should create a new valid account" do
+    sign_in_as(@user, "password")
   	get new_account_path
   	assert_template 'accounts/new'
   	number_of_account = 3
@@ -35,6 +37,7 @@ class AccountsTest < ActionDispatch::IntegrationTest
   end
 
   test "should reject a invalid account" do
+    sign_in_as(@user, "password")
   	get new_account_path
   	assert_template 'accounts/new'
   	assert_no_difference 'Account.count' do
@@ -46,6 +49,7 @@ class AccountsTest < ActionDispatch::IntegrationTest
   end
 
   test "successfully account update" do
+    sign_in_as(@user, "password")
   	get edit_account_path(@account)
   	assert_template 'accounts/edit'
   	updated_account_number = 4
@@ -59,6 +63,7 @@ class AccountsTest < ActionDispatch::IntegrationTest
   end
 
   test "reject a invalid account update" do
+    sign_in_as(@user, "password")
   	get edit_account_path(@account)
   	assert_template 'accounts/edit'
   	patch account_path(@account), params: { account: { account_number: nil, 
@@ -69,6 +74,7 @@ class AccountsTest < ActionDispatch::IntegrationTest
   end
 
   test "successfully account delete" do
+    sign_in_as(@user, "password")
   	get accounts_path
   	assert_template 'accounts/index'
   	assert_select 'a[href=?]', account_path(@account), text: "Deletar"

@@ -1,0 +1,36 @@
+<%= render 'shared/errors', obj: @user %>
+
+		<%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+			<div class="form-group row">
+				<div class="col-md-2 col-form-label">
+					<%= f.label :email %>
+				</div>
+				<div class="col-md-8">
+					<%= f.email_field :email, class: "form-control", placeholder: "Enter your email" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-2 col-form-label">
+					<%= f.label :password %>
+				</div>
+				<div class="col-md-8">
+					<%= f.password_field :password, class: "form-control", placeholder: "Choose a password" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-2 col-form-label">
+					<%= f.label :password_confirmation, "Confirm Password" %>
+				</div>
+				<div class="col-md-8">
+					<%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm password" %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="offset-2 col-md-10">
+					<%= f.submit(@user.new_record? ? "Create my account" : "Update my account", class: "btn btn-primary btn-lg btn-block") %>
+				</div>
+			</div>
+		<% end %>
+		<div class="col-md-4 offset-4 colormatch">
+			[ <%= link_to "Cancel request and return to users login", login_path %> ]
+		</div>
