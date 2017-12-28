@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
 	resources :agencies
 	resources :accounts
+	resources :transactions, except: [:destroy, :update, :edit]
 
 	get '/signup', to: 'users#new'
 	resources :users, except: [:new]

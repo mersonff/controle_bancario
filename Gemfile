@@ -12,6 +12,8 @@ gem 'rails-controller-testing'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1.7'
+gem 'will_paginate', '3.1.0'
+gem 'will_paginate-bootstrap4'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'

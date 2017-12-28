@@ -6,5 +6,7 @@ class Account < ApplicationRecord
 
 	belongs_to :agency
 	validates :agency_id, presence: true
+
+	has_many :transactions, dependent: :destroy
 	
 end

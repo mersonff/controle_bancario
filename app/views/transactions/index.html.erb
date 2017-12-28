@@ -1,0 +1,30 @@
+<h1 align="center">Listando todas as transações</h1>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Conta Bancária</th>
+			<th scope="col">Data de Movimentação</th>
+			<th scope="col">Valor</th>
+			<th scope="col">Tipo de Movimentação</th>
+			<th scope="col">Usuário</th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @transactions.each do |transaction| %>
+		<tr>
+			<th scope="row"><%= transaction.id %></th>
+			<td><%= transaction.account.account_number %></td>
+			<td><%= transaction.date %></td>
+			<td><%= transaction.value %></td>
+			<td><%= transaction.type_of_transaction %></td>
+			<td><%= transaction.user.email %></td>
+		</tr>
+		<% end %> 
+		
+	</tbody>
+</table>
+<div align="center">
+	<%= will_paginate %>
+</div>

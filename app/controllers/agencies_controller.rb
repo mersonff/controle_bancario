@@ -4,7 +4,7 @@ class AgenciesController < ApplicationController
 	before_action :require_user, except: [:index, :show]
 
 	def index
-		@agencies = Agency.all
+		@agencies = Agency.paginate(page: params[:page], per_page: 5)
 	end
 
 	def new

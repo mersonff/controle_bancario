@@ -1,6 +1,6 @@
 <h1 align="center">Listando todas as contas</h1>
 
-	<table class="table">
+	<table class="table" data-sort-name="account-id" data-sort-order="desc">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
@@ -12,6 +12,7 @@
 			</tr>
 		</thead>
 		<tbody>
+		<%= will_paginate %>
 		<% @accounts.each do |account| %>
 			<tr>
 				<th scope="row"><%= account.id %></th>
@@ -23,5 +24,9 @@
 									data: {confirm: "Tem certeza que deseja deletar a conta?"} %></td>
 			</tr>
 		<% end %> 
+		<%= will_paginate %>
 		</tbody>
 	</table>
+	<div align="center">
+	<%= will_paginate %>
+</div>

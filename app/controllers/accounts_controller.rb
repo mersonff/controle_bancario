@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
 	before_action :require_user, except: [:index, :show]
 
 	def index
-		@accounts = Account.all
+		@accounts = Account.paginate(page: params[:page], per_page: 5)
 	end
 
 	def new

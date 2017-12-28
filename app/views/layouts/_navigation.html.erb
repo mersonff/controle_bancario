@@ -1,5 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">SCB</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,17 +7,43 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
+        <%= link_to "Home", root_path, class: "nav-link"%>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuários<span class="caret"></span></a>
+          <div class="dropdown-menu">
+            <%= link_to "Listar todos os usuários", users_path, class: "dropdown-item"%>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agências<span class="caret"></span></a>
+          <div class="dropdown-menu">
+            <%= link_to "Listar todas as agências", agencies_path, class: "dropdown-item"%>
+            <%= link_to "Nova agência", new_agency_path, class: "dropdown-item" %></a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contas<span class="caret"></span></a>
+          <div class="dropdown-menu">
+            <%= link_to "Listar todas as contas", accounts_path, class: "dropdown-item"%>
+            <%= link_to "Nova conta", new_account_path, class: "dropdown-item" %></a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Movimentações<span class="caret"></span></a>
+          <div class="dropdown-menu">
+            <%= link_to "Listar todas as movimentações", transactions_path, class: "dropdown-item"%>
+            <%= link_to "Nova movimentação", new_transaction_path, class: "dropdown-item" %></a>
+          </div>
+        </li>
+      </ul>
     </ul>
     <% if logged_in? %>
     <ul class="navbar-nav">
