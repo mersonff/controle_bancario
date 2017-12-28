@@ -15,4 +15,10 @@ class SessionsController < ApplicationController
 			render 'new'
 		end
 	end
+
+	def destroy
+		session[:user_id] = nil
+		flash[:success] = "Você deslogou da aplicação."
+		redirect_to root_path
+	end
 end
