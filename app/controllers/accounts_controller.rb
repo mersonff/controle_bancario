@@ -37,8 +37,7 @@ class AccountsController < ApplicationController
 	end
 
 	def destroy
-		@account.destroy
-		flash[:danger] = "Conta apagada."
+		flash[:danger] = "Contas não podem ser apagadas."
 		redirect_to accounts_path
 	end
 	

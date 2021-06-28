@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 20171227224911) do
     t.decimal "balance"
   end
 
-  create_table "agencia", force: :cascade do |t|
-    t.integer "numero_da_agencia"
-    t.text "endereco"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "agencies", force: :cascade do |t|
     t.integer "number"
     t.text "address"
